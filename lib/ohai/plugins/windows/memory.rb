@@ -30,5 +30,6 @@ Ohai.plugin(:Memory) do
     
     memory[:free] = os[0]['freephysicalmemory']
     memory[:total] = os[0]['totalvisiblememorysize']
+    memory[:active] = os[0]['totalvisiblememorysize'].to_i - os[0]['freephysicalmemory'].to_i
   end
 end
