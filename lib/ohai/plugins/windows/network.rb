@@ -59,6 +59,6 @@ Ohai.plugin(:Network) do
       end
     end
     
-    network[:interfaces] = iface
+    network[:interfaces] = ipv4#iface
   end
 end
