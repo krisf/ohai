@@ -18,7 +18,7 @@
 
 Ohai.plugin(:Network) do
   provides "network", "network/interfaces"
-  provides "counters/network", "counters/network/interfaces"
+  #provides "counters/network", "counters/network/interfaces"
 
   def windows_encaps_lookup(encap)
     return "Ethernet" if encap.eql?("Ethernet 802.3")
@@ -59,6 +59,6 @@ Ohai.plugin(:Network) do
       end
     end
     
-    network[:interfaces] = ipv4#iface
+    network[:interfaces] = networks#iface
   end
 end
