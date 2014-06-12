@@ -29,8 +29,8 @@ Ohai.plugin(:Network) do
     require 'ruby-wmi'
 
     iface = Mash.new
-    network Mash.new unless network
-    network[:interfaces] = Mash.new unless network[:interfaces]
+    network Mash.new# unless network
+    network[:interfaces] = Mash.new# unless network[:interfaces]
     #counters Mash.new unless counters
     #counters[:network] = Mash.new unless counters[:network]
 
@@ -59,6 +59,6 @@ Ohai.plugin(:Network) do
       end
     end
     
-    network[:interfaces][:test] = 'testvalue'#iface
+    network[:test] = 'testvalue'#iface
   end
 end
