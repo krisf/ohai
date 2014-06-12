@@ -59,6 +59,6 @@ Ohai.plugin(:Network) do
       end
     end
     
-    network[:interfaces] = networks#iface
+    network[:interfaces] = 'test'#iface
   end
 end
