@@ -29,12 +29,10 @@ Ohai.plugin(:Network) do
     require 'ruby-wmi'
 
     iface = Mash.new
-    iface_config = Mash.new
-    iface_instance = Mash.new
     network Mash.new unless network
     network[:interfaces] = Mash.new unless network[:interfaces]
-    counters Mash.new unless counters
-    counters[:network] = Mash.new unless counters[:network]
+    #counters Mash.new unless counters
+    #counters[:network] = Mash.new unless counters[:network]
 
     networks = wmi.instances_of('Win32_NetworkAdapterConfiguration')
 
@@ -43,7 +41,7 @@ Ohai.plugin(:Network) do
       ipv4 = network['ipaddress'].map{|ip| ip if ip =~ Resolv::IPv4::Regex }.compact
       ipv6 = network['ipaddress'].map{|ip| ip if ip =~ Resolv::IPv6::Regex }.compact
       iface[index][:configuration][:mac_address] = [network['macaddress']]
-      iface[index]['description'] = network['description']
+      iface[index][:description] = network['description']
       
       if ipv6.any?
         ipv6.each do |ip| 
@@ -56,11 +54,11 @@ Ohai.plugin(:Network) do
         end
       end
       
-      [iface[cint][:configuration][:mac_address]].flatten.each do |mac_addr|
-        iface[cint][:addresses][mac_addr] = { "family" => "lladdr" }
+      [iface[index][:configuration][:mac_address]].flatten.each do |mac_addr|
+        iface[index][:addresses][mac_addr] = { "family" => "lladdr" }
       end
     end
     
-    network["interfaces"] = iface
+    network[:interfaces] = iface
   end
 end
