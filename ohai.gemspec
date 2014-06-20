@@ -19,7 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency "mixlib-config", "~> 2.0"
   s.add_dependency "mixlib-log"
   s.add_dependency "mixlib-shellout", "~> 1.2"
-  s.add_dependency "ipaddress"
+  s.add_dependency "ipaddress", "~> 0.8.0"
+  s.add_dependency "wmi-lite", "~> 1.0.0"
 
   # Rake 10.2 drops Ruby 1.8 support, so stick to 10.1.x until chef also drops
   # 1.8.
